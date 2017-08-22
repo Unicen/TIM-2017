@@ -25,3 +25,8 @@ Si queremos clonar un repositorio en un directorio nuevo, nos movemos hasta ese 
 En este caso se clona este repositorio, para clonar otro simplemente se cambia la dirección URL.
 
 # Agregar, commitear y pushear #
+En git, tenemos el repositorio local y el repositorio remoto. Nuestro repositorio local se compone de tres partes: el directorio, el index y el head. Para guardar nuestros cambios en el repositorio remoto, debemos llevarlos primero al index, luego al head y finalmente commitearlos al repositorio remoto. Para ello debemos ejecutar (en orden) los siguientes comandos:
+
+- *git add <dir>* (<dir> es el archivo o carpeta cuyos cambios queremos commitear). Esto los añade al index. 
+- *git commit -m "comentario"*. Este comando commitea al head los cambios añadidos mediante el comando *add*. La opción -m nos deja describir nuestro commit.
+- *git push origin master*. Finalmente pusheamos nuestro head al head del repositorio remoto.
