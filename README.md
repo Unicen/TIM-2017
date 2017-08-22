@@ -6,6 +6,7 @@ Este código corresponde a la cursada 2017 del Taller de Imágenes Médicas, vá
 - [Creación de un nuevo repositorio](#nuevorepo) 
 - [Clonar o actualizarnos respecto de un repositorio existente](#clonarrepo) 
 - [Agregar, commitear y pushear](#addcommitpush)
+- [Chequear el status de nuestros cambios](#chequearstatus)
 
 # Instalación de git #
 
@@ -30,3 +31,6 @@ En git, tenemos el repositorio local y el repositorio remoto. Nuestro repositori
 - *git add <dir>* (<dir> es el archivo o carpeta cuyos cambios queremos commitear). Esto los añade al index. 
 - *git commit -m "comentario"*. Este comando commitea al head los cambios añadidos mediante el comando *add*. La opción -m nos deja describir nuestro commit.
 - *git push origin master*. Finalmente pusheamos nuestro head al head del repositorio remoto.
+
+# Chequear el status de nuestros cambios #
+Para saber si añadimos todos los archivos que queríamos, o si todo está listo para commitear, o el estado general de nuestros cambios, podemos ejecutar el comando *git status*.
