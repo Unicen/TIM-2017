@@ -38,4 +38,4 @@ En git, tenemos el repositorio local y el repositorio remoto. Nuestro repositori
 Para saber si añadimos todos los archivos que queríamos, o si todo está listo para commitear, o el estado general de nuestros cambios, podemos ejecutar el comando *git status*.
 
 # Otros comandos #
-Para una guía más completa, visitamos la documentación de [git] (https://git-scm.com/)
+Para una guía más completa, visitamos la documentación de [Git](https://git-scm.com/)
