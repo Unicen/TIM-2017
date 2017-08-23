@@ -24,7 +24,7 @@ Creamos un nuevo directorio, nos movemos hasta él y ejecutamos el comando *git 
 
 # Clonar un repositorio existente #
 Si ya tenemos clonado un repositorio y solamente queremos actualizar nuestros datos locales, ejecutamos el comando *git pull origin master*.
-Si queremos clonar un repositorio en un directorio nuevo, nos movemos hasta ese directorio y ejecutamos el comando *git clone https://github.com/Unicen/TIM-2017.git*.
+Si queremos clonar un repositorio en un directorio nuevo, nos movemos hasta ese directorio y ejecutamos el comando *git clone https://<span></span>github.com/<span></span>Unicen/TIM-2017.git*.
 En este caso se clona este repositorio, para clonar otro simplemente se cambia la dirección URL.
 
 # Agregar, commitear y pushear #
