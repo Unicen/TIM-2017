@@ -106,10 +106,12 @@ std_ = std(validation_X);
 % Normalizamos las intensidades
 validation_X = bsxfun(@rdivide, bsxfun(@minus, validation_X, mean_), std_);
 
+%% Ejercicio 4. Graficar diferentes pares de indicadores y analizar
+
 % Graficar los descriptores
 scatter_plots(X(:,1), X(:,2), labels);
 
-%% Ejercicio 4. Usamos el modelo sobre la imagen de validacion para ver que obtuvimos
+%% Ejercicio 5. Usamos el modelo sobre la imagen de validacion para ver que obtuvimos
 
 fprintf('\nEvaluando el modelo sobre una imagen de validacion\n');
 
@@ -133,7 +135,7 @@ fprintf('AUC curva PR/RE = %d\n', auc);
 dice = dice_coefficient(labels, scores > 0);
 fprintf('Dice = %d\n', dice);
 
-%% Ejercicio 6. Entrenamos como se debe!
+%% Ejercicio 7. Entrenamos como se debe!
 fprintf('\nArmamos los datos de validacion\n');
 
 % Preparamos los datos de validacion como corresponde
@@ -203,7 +205,7 @@ end
 [max_auc, idx] = max(calidades);
 fprintf('\nEl mejor modelo es el lambda = 10^%d\n', espacio_busqueda(idx));
 
-%% Ejercicio 7. Evaluamos sobre los datos de test
+%% Ejercicio 8. Evaluamos sobre los datos de test
 fprintf('\nEvaluamos sobre los datos de test\n');
 
 % Inicializamos un arreglo en el que ir colocando las calidades
