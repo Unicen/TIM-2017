@@ -1,4 +1,4 @@
-%%% PRÁCTICO Nº3 - TALLER DE IMÁGENES MÉDICAS - FACULTAD DE CIENCIAS
+%%% PRï¿½CTICO Nï¿½3 - TALLER DE IMï¿½GENES Mï¿½DICAS - FACULTAD DE CIENCIAS
 %%% EXACTAS - UNCPBA.
 
 %% Preliminar: Seteo del ambiente
@@ -7,7 +7,7 @@ close all;
 clc;
 
 
-% Abro las imágenes
+% Abro las imï¿½genes
 file_brain = strcat('Data', filesep, 'brains.mat');
 load(file_brain);
 
@@ -24,8 +24,8 @@ t1c = t1c(:,:,numcorte)';
 t1c = uint8(((t1c - min(t1c(:))) / (max(t1c(:)) - min(t1c(:)))) * 255);
 
 %% Ejercicio 1.a)
-% Obtener el histograma de la imagen de resonancia magnética de modalidad T1.
-% Qué dificultad se encuentra al visualizar el histograma? 
+% Obtener el histograma de la imagen de resonancia magnï¿½tica de modalidad T1.
+% Quï¿½ dificultad se encuentra al visualizar el histograma? 
 [~,Ft1] = mode(t1(:));
 
 % Muestro un corte de la imagen y el histograma
@@ -38,10 +38,10 @@ subplot(1,2,2), imhist(t1,256); ylim([0 Ft1]);
 
 %% Ejercicio 1.b)
 % Obtener el histograma de cada modalidad de la imagen de resonancia 
-% magnética, aplicando una máscara a cada una de ellas. 
-% Discutir las características de cada uno y comparar brevemente.
+% magnï¿½tica, aplicando una mï¿½scara a cada una de ellas. 
+% Discutir las caracterï¿½sticas de cada uno y comparar brevemente.
 
-% Armo una máscara sólo de la parte que nos interesa (el cerebro)
+% Armo una mï¿½scara sï¿½lo de la parte que nos interesa (el cerebro)
 mask = single(flair) + single(t1) + single(t1c) + single(t2);
 mask(mask>0) = 1;
 mask = logical(mask);
@@ -75,17 +75,17 @@ subplot(1,2,1), imshow(t2);
 subplot(1,2,2), imhist(t2(mask),256); ylim([0 Ft2]);
 
 %% Ejercicio 1.c)
-% Obtener las intensidades máxima, mínima y promedio de cada imagen. 
-% Obtener la moda del histograma. ¿Coinciden la moda y la intensidad 
-% máxima? ¿Por qué? Comparar los valores de moda obtenidos para cada 
+% Obtener las intensidades mï¿½xima, mï¿½nima y promedio de cada imagen. 
+% Obtener la moda del histograma. ï¿½Coinciden la moda y la intensidad 
+% mï¿½xima? ï¿½Por quï¿½? Comparar los valores de moda obtenidos para cada 
 % imagen.
 
 close all;
 fprintf('\n\n Ejercicio 1.c) \n\n');
 
-% Calculo el máximo valor de intensidad dentro del cerebro
+% Calculo el mï¿½ximo valor de intensidad dentro del cerebro
 max_flair = max(flair(mask));
-% Calculo el mínimo valor de intensidad dentro del cerebro
+% Calculo el mï¿½nimo valor de intensidad dentro del cerebro
 min_flair = min(flair(mask));
 % Calculo el valor promedio de intensidad dentro del cerebro
 mean_flair = mean(flair(mask));
@@ -107,9 +107,9 @@ l_mode=line([mode_flair,mode_flair],[0 Ff],'Color','Magenta');
 legend([l_mean,l_min,l_max,l_mode],'Mean','Min','Max','Mode')
 
 
-% Calculo el máximo valor de intensidad dentro del cerebro
+% Calculo el mï¿½ximo valor de intensidad dentro del cerebro
 max_t1 = max(t1(mask));
-% Calculo el mínimo valor de intensidad dentro del cerebro
+% Calculo el mï¿½nimo valor de intensidad dentro del cerebro
 min_t1 = min(t1(mask));
 % Calculo el valor promedio de intensidad dentro del cerebro
 mean_t1 = mean(t1(mask));
@@ -130,9 +130,9 @@ l_max=line([max_t1,max_t1],[0 Ft1],'Color','Red');
 l_mode=line([mode_t1,mode_t1],[0 Ft1],'Color','Magenta'); 
 legend([l_mean,l_min,l_max,l_mode],'Mean','Min','Max','Mode')
 
-% Calculo el máximo valor de intensidad dentro del cerebro
+% Calculo el mï¿½ximo valor de intensidad dentro del cerebro
 max_t1c = max(t1c(mask));
-% Calculo el mínimo valor de intensidad dentro del cerebro
+% Calculo el mï¿½nimo valor de intensidad dentro del cerebro
 min_t1c = min(t1c(mask));
 % Calculo el valor promedio de intensidad dentro del cerebro
 mean_t1c = mean(t1c(mask));
@@ -153,9 +153,9 @@ l_mode=line([mode_t1c,mode_t1c],[0 Ft1c],'Color','Magenta');
 legend([l_mean,l_min,l_max,l_mode],'Mean','Min','Max','Mode')
 
 
-% Calculo el máximo valor de intensidad dentro del cerebro
+% Calculo el mï¿½ximo valor de intensidad dentro del cerebro
 max_t2 = max(t2(mask));
-% Calculo el mínimo valor de intensidad dentro del cerebro
+% Calculo el mï¿½nimo valor de intensidad dentro del cerebro
 min_t2 = min(t2(mask));
 % Calculo el valor promedio de intensidad dentro del cerebro
 mean_t2 = mean(t2(mask));
@@ -176,8 +176,8 @@ legend([l_mean,l_min,l_max,l_mode],'Mean','Min','Max','Mode')
 
 %% Ejercicio 1.d)
 % Corregir las intensidades del corte de la MRI T1 con contraste de 
-% gadolinio utilizando la función imadjust de Matlab. ¿Qué cambios se 
-% observan en la imagen? ¿Y en el histograma?
+% gadolinio utilizando la funciï¿½n imadjust de Matlab. ï¿½Quï¿½ cambios se 
+% observan en la imagen? ï¿½Y en el histograma?
 
 fprintf('\n\n Ejercicio 1.d) \n\n');
 
@@ -188,7 +188,7 @@ slice_ajustado = imadjust(slice);
 [~,Fsliceajust] = mode(slice_ajustado(mask));
 
 % Mostrar ambos cortes por pantalla
-figure('name', 'Comparación entre el histograma del corte original y el del corte ajustado');
+figure('name', 'Comparaciï¿½n entre el histograma del corte original y el del corte ajustado');
 subplot(2,2,1); imshow(slice, [min(slice(mask)) max(slice(mask))]);
 title('Corte original');
 subplot(2,2,2); imhist(slice(mask), 256); ylim([0 Fslice]);
@@ -199,16 +199,16 @@ subplot(2,2,4); imhist(slice_ajustado(mask), 256); ylim([0 Fsliceajust]);
 title('Histograma del corte ajustado');
 
 %% Ejercicio 1.e)
-% Ajustar nuevamente las intensidades del corte, pero utilizando la función
-% adapthisteq. Comparar con el ajuste anterior. ¿Hubo mejoras respecto a la
-% identificación de la región necrótica? ¿Y respecto a los demás tejidos?
+% Ajustar nuevamente las intensidades del corte, pero utilizando la funciï¿½n
+% adapthisteq. Comparar con el ajuste anterior. ï¿½Hubo mejoras respecto a la
+% identificaciï¿½n de la regiï¿½n necrï¿½tica? ï¿½Y respecto a los demï¿½s tejidos?
 
-% Ajustar el corte usando la técnica CLAHE
+% Ajustar el corte usando la tï¿½cnica CLAHE
 slice_ajustado_CLAHE = adapthisteq(slice);
 [~,Fclahe] = mode(slice_ajustado_CLAHE(mask));
 
 % Graficar los dos slices ajustados y sus histogramas
-figure('name', 'Comparación entre el histograma de la imagen ajustada con imadjust y el del corte ajustado con CLAHE');
+figure('name', 'Comparaciï¿½n entre el histograma de la imagen ajustada con imadjust y el del corte ajustado con CLAHE');
 subplot(2,2,1); imshow(slice_ajustado, [min(slice_ajustado(mask)) max(slice_ajustado(mask))]);
 title('Corte ajustado con imadjust');
 subplot(2,2,2); imhist(slice_ajustado(mask), 256); ylim([0 Fsliceajust]);
@@ -221,8 +221,8 @@ title('Histograma del corte ajustado con CLAHE');
 
 
 %% Ejercicio 2.a)
-% Comparar las 3 bandas de color de la retinografía de ejemplo. ¿En cuál 
-% cree que será más fácil segmentar los vasos sanguíneos? Explique por qué.
+% Comparar las 3 bandas de color de la retinografï¿½a de ejemplo. ï¿½En cuï¿½l 
+% cree que serï¿½ mï¿½s fï¿½cil segmentar los vasos sanguï¿½neos? Explique por quï¿½.
 close all;
 clc;
 
@@ -230,7 +230,7 @@ clc;
 I = imread(strcat('Data',filesep,'\retinografia.tif'));
 
 % Mostrar cada banda de color en pantalla
-figure('name', 'Bandas de color de la retinografía');
+figure('name', 'Bandas de color de la retinografï¿½a');
 subplot(2,2,1); imshow(I);
 title('RGB');
 subplot(2,2,2); imshow(I(:,:,1));
@@ -241,13 +241,13 @@ subplot(2,2,4), imshow(I(:,:,3));
 title('Azul');
 
 %% Ejercicio 2.b)
-% Estimar el bias del fondo de la retinografía de ejemplo utilizando un 
+% Estimar el bias del fondo de la retinografï¿½a de ejemplo utilizando un 
 % filtro de mediana con ventanas de lado 40.
 
 % Obtener el canal verde de la imagen
 verde = I(:,:,2);
 
-% Estimar el fondo usando un filtro de mediana de tamaño 40
+% Estimar el fondo usando un filtro de mediana de tamaï¿½o 40
 fondo = medfilt2(verde, [40 40]);
 
 % Mostrar el fondo en pantalla
@@ -259,8 +259,8 @@ title('Fondo estimado');
 
 %% Ejercicio 2.c)
 % Sustraer el fondo con bias a la imagen original. Comparar 
-% cualitativamente con la imagen anterior en el contexto de la segmentación
-% de vasos sanguíneos.
+% cualitativamente con la imagen anterior en el contexto de la segmentaciï¿½n
+% de vasos sanguï¿½neos.
 
 % Sustraerle el fondo al canal verde
 sinfondo = double(verde) - double(fondo);
@@ -275,17 +275,17 @@ subplot(1, 3, 3); imshow(sinfondo, [min(sinfondo(:)) max(sinfondo(:))]);
 title('Canal verde con fondo removido');
 
 %% Ejercicio 2.d)
-% Estudiar cualitativamente cómo variaría la segmentación a medida que se 
+% Estudiar cualitativamente cï¿½mo variarï¿½a la segmentaciï¿½n a medida que se 
 % achican o se agrandan los vecindarios utilizados.
 
-% Setear los tamaños de ventana
+% Setear los tamaï¿½os de ventana
 ventanas = [10 25 40 70];
 
 % Mostrar por pantalla el fondo estimado y cada imagen sin fondo
 numsubplot = 1;
-figure('name', 'Fondos estimados con diferentes tamaños de ventana');
+figure('name', 'Fondos estimados con diferentes tamaï¿½os de ventana');
 for v = ventanas
-    % Estimar un fondo usando un vecindario de tamaño v
+    % Estimar un fondo usando un vecindario de tamaï¿½o v
     fondo = medfilt2(verde, [v v]);
     % Sustraerle el fondo al canal verde
     sinfondo = double(verde) - double(fondo);

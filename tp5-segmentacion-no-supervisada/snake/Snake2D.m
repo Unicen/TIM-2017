@@ -140,7 +140,7 @@ Fext=GVFOptimizeImageForces2D(Fext, Options.Mu, Options.GIterations, Options.Sig
 
 % Show the image, contour and force field
 if(Options.Verbose)
-    h=figure; set(h,'render','opengl')
+    h=figure; set(h,'renderer','opengl')
      subplot(2,2,1),
       imshow(I,[]); 
       hold on; plot(P(:,2),P(:,1),'b.'); hold on;
@@ -178,4 +178,5 @@ end
 if(nargout>1)
      J=DrawSegmentedArea2D(P,size(I));
 end
+     J=DrawSegmentedArea2D(P,size(I));
 

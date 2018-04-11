@@ -3,19 +3,19 @@ clear;
 close all;
 clc;
 
-% NOTA: SETEAR LA VARIABLE ROOT CON EL PATH DONDE GUARDASTE LAS IMÁGENES
-% DEL PRÁCTICO. ACORDARSE DE INCLUIR '\' AL FINAL.
+% NOTA: SETEAR LA VARIABLE ROOT CON EL PATH DONDE GUARDASTE LAS IMï¿½GENES
+% DEL PRï¿½CTICO. ACORDARSE DE INCLUIR '\' AL FINAL.
 %root = '...';
-root = 'imágenes\';
+root = 'img/';
 
-% Abro la imagen, la segmentación de referencia y la máscara
+% Abro la imagen, la segmentaciï¿½n de referencia y la mï¿½scara
 I = imread(strcat(root, 'ivus.png'));
 I = double(I)/255;
 gt = imread(strcat(root, 'ivus_manual1.png'));
 mask = imread(strcat(root, 'ivus_mask.png'));
 mask = double(mask(:,:,1));
 
-% Acomodamos la máscara
+% Acomodamos la mï¿½scara
 mask(mask>0) = 1;
 mask = double(mask);
 
@@ -26,12 +26,12 @@ subplot(1,3,3);  imshow(mask); title('Mascara');
 
 %% Ejercicio 1
 % Realizar un umbralado de la banda del verde preprocesada para obtener los
-% vasos sanguíneos. ¿Qué dificultades se observan en los resultados obtenidos?
+% vasos sanguï¿½neos. ï¿½Quï¿½ dificultades se observan en los resultados obtenidos?
 
-% Modificá este valor con el que más te guste :)
+% Modificï¿½ este valor con el que mï¿½s te guste :)
 threshold = 0.4;
 
-% Segmentación por umbralado
+% Segmentaciï¿½n por umbralado
 segm = I;
 segm(I <= threshold) = 1;
 segm(I > threshold) = 0;
@@ -39,7 +39,7 @@ segm(I > threshold) = 0;
 %Diferencia con Parte 1 - Filtrado
 segmFiltrado = I;
 
-%Cambiar el tamaño de ventana
+%Cambiar el tamaï¿½o de ventana
 ladoVentana = 20;
 
 Ifiltrada = medfilt2(I, [ladoVentana ladoVentana]);
@@ -47,40 +47,40 @@ segmFiltrado(Ifiltrada <= threshold) = 1;
 segmFiltrado(Ifiltrada > threshold) = 0;
 
 % Muestro por pantalla
-figure('name','Imagen preprocesada y su segmentación por umbralado');
+figure('name','Imagen preprocesada y su segmentaciï¿½n por umbralado');
 subplot(2,3,1), imshow(I);
 title('Imagen preprocesada');
 subplot(2,3,2), imshow(segm);
-title(strcat('Segmentación con t=',num2str(threshold)));
+title(strcat('Segmentaciï¿½n con t=',num2str(threshold)));
 subplot(2,3,3), imshow(gt);
-title('Segmentación de referencia');
+title('Segmentaciï¿½n de referencia');
 subplot(2,3,4), imshow(Ifiltrada);
 title('Imagen Filtrada');
 subplot(2,3,5), imshow(segmFiltrado);
-title(strcat('Segmentación de I filtrada con t=',num2str(threshold)));
+title(strcat('Segmentaciï¿½n de I filtrada con t=',num2str(threshold)));
 
 
 %% Ejercicio 2.a) Bordes.
-% Estudiar las características de los bordes de los vasos sanguíneos en 
-% algunos sectores de la imagen de fondo de ojo. ¿A cuál de los bordes que 
-% vimos anteriormente se parece más?
+% Estudiar las caracterï¿½sticas de los bordes de los vasos sanguï¿½neos en 
+% algunos sectores de la imagen de fondo de ojo. ï¿½A cuï¿½l de los bordes que 
+% vimos anteriormente se parece mï¿½s?
 
-figure('name','Seleccioná el perfil de intensidades de un vaso y pulsá doble clic');
+figure('name','Seleccionï¿½ el perfil de intensidades de un vaso y pulsï¿½ doble clic');
 imshow(I);
 improfile
 
 %% b) Bordes con imagen filtrada
-figure('name','Seleccioná el perfil de intensidades de un vaso y pulsá doble clic');
+figure('name','Seleccionï¿½ el perfil de intensidades de un vaso y pulsï¿½ doble clic');
 imshow(Ifiltrada);
 improfile
 
 %% Ejercicio 2.c) Bordes.
 % Obtener las componentes Gx y Gy del vector gradiente utilizando la 
-% función gradient de Matlab. ¿Qué bordes resalta cada una de las 
-% coordenadas? Obtener el módulo y la dirección. ¿Qué bordes destaca 
-% el módulo?
+% funciï¿½n gradient de Matlab. ï¿½Quï¿½ bordes resalta cada una de las 
+% coordenadas? Obtener el mï¿½dulo y la direcciï¿½n. ï¿½Quï¿½ bordes destaca 
+% el mï¿½dulo?
 
-% Poner acá la imagen que querés usar para calcular el gradiente
+% Poner acï¿½ la imagen que querï¿½s usar para calcular el gradiente
 ImagenParaGradiente = Inorm;
 
 % Calculo las componentes en x e y del vector gradiente
@@ -101,13 +101,13 @@ subplot(2, 2, 4), imshow(gy, [min(gy(:)) max(gy(:))]);
 title('Gy');
 
 %% Ejercicio 2.c) Bordes.
-% Calcular el gradiente de Sobel de la imagen. Realizar un umbralado. ¿Qué
+% Calcular el gradiente de Sobel de la imagen. Realizar un umbralado. ï¿½Quï¿½
 % resultados se obtienen?
 
-% Poner acá la imagen que querés usar para calcular el gradiente
+% Poner acï¿½ la imagen que querï¿½s usar para calcular el gradiente
 ImagenParaGradiente = Inorm;
 
-% Obtener el gradiente de Sobel (magnitud y dirección)
+% Obtener el gradiente de Sobel (magnitud y direcciï¿½n)
 [gmag, gdir] = imgradient(ImagenParaGradiente, 'sobel');
 
 % Mostrar el gradiente
@@ -117,29 +117,29 @@ title('Imagen original');
 subplot(1,2,2), imshow(gmag, [min(gmag(:)) max(gmag(:))]);
 title('Gradiente de Sobel');
 
-% Modificá este valor con el que más te guste :)
+% Modificï¿½ este valor con el que mï¿½s te guste :)
 threshold = 0.4;
 
-% Segmentación por umbralado
+% Segmentaciï¿½n por umbralado
 segm = gmag;
 segm(gmag >= threshold) = 1;
 segm(gmag < threshold) = 0;
 
 % Muestro por pantalla
-figure('name','Filtro de Sobel y su segmentación por umbralado');
+figure('name','Filtro de Sobel y su segmentaciï¿½n por umbralado');
 subplot(1,3,1), imshow(gmag, [min(gmag(:)) max(gmag(:))]);
 title('Gradiente de Sobel');
 subplot(1,3,2), imshow(segm);
-title(strcat('Segmentación con t=',num2str(threshold)));
+title(strcat('Segmentaciï¿½n con t=',num2str(threshold)));
 subplot(1,3,3), imshow(gt);
-title('Segmentación de referencia');
+title('Segmentaciï¿½n de referencia');
 
 %% Ejercicio 2.d) Bordes.
 % Calcular el Laplaciano de la imagen. Segmentar la imagen utilizando 
-% umbralado ¿Qué características del filtro se observan respecto al ruido?
+% umbralado ï¿½Quï¿½ caracterï¿½sticas del filtro se observan respecto al ruido?
 close all
 
-% Poner acá la imagen que querés usar para calcular el gradiente
+% Poner acï¿½ la imagen que querï¿½s usar para calcular el gradiente
 ImagenParaGradiente = Inorm;
 
 % Calculo el Laplaciano
@@ -154,30 +154,30 @@ title('Imagen original');
 subplot(1,2,2), imshow(laplaciano, [min(laplaciano(:)) max(laplaciano(:))]);
 title('Laplaciano');
 
-% Modificá este valor con el que más te guste :)
+% Modificï¿½ este valor con el que mï¿½s te guste :)
 threshold = 0.48;
 
-% Segmentación por umbralado
+% Segmentaciï¿½n por umbralado
 segm = laplaciano;
 segm(laplaciano > threshold) = 1;
 segm(laplaciano <= threshold) = 0;
 
 % Muestro por pantalla
-figure('name','Laplaciano y su segmentación por umbralado');
+figure('name','Laplaciano y su segmentaciï¿½n por umbralado');
 subplot(1,3,1), imshow(laplaciano, [min(laplaciano(:)) max(laplaciano(:))]);
 title('Laplaciano');
 subplot(1,3,2), imshow(segm);
-title(strcat('Segmentación con t=',num2str(threshold)));
+title(strcat('Segmentaciï¿½n con t=',num2str(threshold)));
 subplot(1,3,3), imshow(gt);
-title('Segmentación de referencia');
+title('Segmentaciï¿½n de referencia');
 
 %% Ejercicio 2.e) Bordes.
-% Calcular el LOG de la imagen. ¿Que cambios se observan respecto al
-% Laplaciano? Obtener una nueva segmentación de los vasos sanguíneos por
+% Calcular el LOG de la imagen. ï¿½Que cambios se observan respecto al
+% Laplaciano? Obtener una nueva segmentaciï¿½n de los vasos sanguï¿½neos por
 % umbralado.
 close all
 
-% Poner acá la imagen que querés usar para calcular el gradiente
+% Poner acï¿½ la imagen que querï¿½s usar para calcular el gradiente
 ImagenParaGradiente = Inorm;
 
 % Calculo el LOG
@@ -193,29 +193,29 @@ title('Laplaciano');
 subplot(1,2,2), imshow(log_, [min(log_(:)) max(log_(:))]);
 title('LOG');
 
-% Modificá este valor con el que más te guste :)
+% Modificï¿½ este valor con el que mï¿½s te guste :)
 threshold = 0.57;
 
-% Segmentación por umbralado
+% Segmentaciï¿½n por umbralado
 segm = log_;
 segm(log_ > threshold) = 1;
 segm(log_ <= threshold) = 0;
 
 % Muestro por pantalla
-figure('name','LOG y su segmentación por umbralado');
+figure('name','LOG y su segmentaciï¿½n por umbralado');
 subplot(1,3,1), imshow(log_, [min(log_(:)) max(log_(:))]);
 title('LOG');
 subplot(1,3,2), imshow(segm);
-title(strcat('Segmentación con t=',num2str(threshold)));
+title(strcat('Segmentaciï¿½n con t=',num2str(threshold)));
 subplot(1,3,3), imshow(gt);
-title('Segmentación de referencia');
+title('Segmentaciï¿½n de referencia');
 
 %% Ejercicio 2.f) Bordes.
 % Obtener los bordes de la imagen utilizando el filtro de Canny. 
-% Comparar con la segmentación de referencia e indicar diferencias.
+% Comparar con la segmentaciï¿½n de referencia e indicar diferencias.
 close all
 
-% Poner acá la imagen que querés usar para calcular el gradiente
+% Poner acï¿½ la imagen que querï¿½s usar para calcular el gradiente
 ImagenParaGradiente = Inorm;
 
 % Calculo el filtro de Canny
@@ -228,4 +228,4 @@ title('Imagen');
 subplot(1,3,2), imshow(cannyedges);
 title('Filtro de Canny');
 subplot(1,3,3), imshow(gt);
-title('Segmentación de referencia');
+title('Segmentaciï¿½n de referencia');
