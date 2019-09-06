@@ -3,7 +3,7 @@
 % Taller de Imagenes Medicas
 % Trabajo Practico Nro. 6
 % Segmentacion supervisada
-% 2017 - Jose Ignacio Orlando
+% 2019 - Jose Ignacio Orlando
 % -------------------------------------------------------------------------
 
 %% Preparamos el ambiente
@@ -14,9 +14,10 @@ clear
 clc
 
 % Configuramos VLFeat.
-run('vlfeat-0.9.20/toolbox/vl_setup')
+folder=uigetdir
+run(strcat(folder,filesep,'vlfeat-0.9.21/toolbox/vl_setup'))
 % Definimos la ruta de origen de los datos.
-root_data_folder = './Data';
+root_data_folder = strcat(folder,filesep,'/Data');
 
 % Nos traemos los nombres de las imagenes de entrenamiento
 training_image_filenames = dir(fullfile(root_data_folder, 'training', 'images', '*.jpg'));
